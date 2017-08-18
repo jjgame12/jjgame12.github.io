@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -93,18 +93,17 @@
 
 
 
-<meta name="description" content="第一次学会使用搭建博客，第一时间和大嘎分享，每当看到别人写书什么的都会写道感谢。。。，虽然我还到不了这种境界，但是也想将这种新鲜感向身边的人传递，比如，大嘎。这将是一个记录技术的博客，也是一个记录关于大嘎的东西。">
+<meta name="description" content="二叉堆二叉堆是通过递归定义的：首先二叉堆是一个完全二叉树或近似完全二叉树（这里近似完全二叉树是什么东东？）    父节点键值大于或等于（or小于或等于）子节点键值; 左右子树仍然是二叉堆。  上浮和下沉 下沉对于根节点而言，一般是最大或最小的节点，那么如果一个不满足这个条件的序列，就需要通过一系列步骤来建立堆，下沉是其中之一。删除节点时，首先将最后的节点覆盖根节点，然后通过下沉操作确定合适的位置，">
+<meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="大嘎，看，我们的博客">
-<meta property="og:url" content="http://yoursite.com/2017/06/29/building/index.html">
+<meta property="og:title" content="堆和堆排序">
+<meta property="og:url" content="http://yoursite.com/2017/08/18/堆和堆排序/index.html">
 <meta property="og:site_name" content="jjgame的世界">
-<meta property="og:description" content="第一次学会使用搭建博客，第一时间和大嘎分享，每当看到别人写书什么的都会写道感谢。。。，虽然我还到不了这种境界，但是也想将这种新鲜感向身边的人传递，比如，大嘎。这将是一个记录技术的博客，也是一个记录关于大嘎的东西。">
-<meta property="og:image" content="http://yoursite.com/images/together.jpg">
-<meta property="og:updated_time" content="2017-06-28T16:28:12.000Z">
+<meta property="og:description" content="二叉堆二叉堆是通过递归定义的：首先二叉堆是一个完全二叉树或近似完全二叉树（这里近似完全二叉树是什么东东？）    父节点键值大于或等于（or小于或等于）子节点键值; 左右子树仍然是二叉堆。  上浮和下沉 下沉对于根节点而言，一般是最大或最小的节点，那么如果一个不满足这个条件的序列，就需要通过一系列步骤来建立堆，下沉是其中之一。删除节点时，首先将最后的节点覆盖根节点，然后通过下沉操作确定合适的位置，">
+<meta property="og:updated_time" content="2017-08-18T14:03:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="大嘎，看，我们的博客">
-<meta name="twitter:description" content="第一次学会使用搭建博客，第一时间和大嘎分享，每当看到别人写书什么的都会写道感谢。。。，虽然我还到不了这种境界，但是也想将这种新鲜感向身边的人传递，比如，大嘎。这将是一个记录技术的博客，也是一个记录关于大嘎的东西。">
-<meta name="twitter:image" content="http://yoursite.com/images/together.jpg">
+<meta name="twitter:title" content="堆和堆排序">
+<meta name="twitter:description" content="二叉堆二叉堆是通过递归定义的：首先二叉堆是一个完全二叉树或近似完全二叉树（这里近似完全二叉树是什么东东？）    父节点键值大于或等于（or小于或等于）子节点键值; 左右子树仍然是二叉堆。  上浮和下沉 下沉对于根节点而言，一般是最大或最小的节点，那么如果一个不满足这个条件的序列，就需要通过一系列步骤来建立堆，下沉是其中之一。删除节点时，首先将最后的节点覆盖根节点，然后通过下沉操作确定合适的位置，">
 
 
 
@@ -132,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/06/29/building/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/18/堆和堆排序/"/>
 
 
 
 
 
-  <title>大嘎，看，我们的博客 | jjgame的世界</title>
+  <title>堆和堆排序 | jjgame的世界</title>
   
 
 
@@ -257,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/building/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/18/堆和堆排序/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jjgame">
@@ -274,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">大嘎，看，我们的博客</h1>
+          <h1 class="post-title" itemprop="name headline">堆和堆排序</h1>
         
 
         <div class="post-meta">
@@ -286,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T00:28:12+08:00">
-                2017-06-29
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-18T22:03:35+08:00">
+                2017-08-18
               </time>
             
 
@@ -321,8 +320,21 @@
       
 
       
-        <p>第一次学会使用搭建博客，第一时间和大嘎分享，每当看到别人写书什么的都会写道感谢。。。，虽然我还到不了这种境界，但是也想将<br>这种新鲜感向身边的人传递，比如，大嘎。这将是一个记录技术的博客，也是一个记录关于大嘎的东西。</p>
-<p><img src="/images/together.jpg" alt="img"></p>
+        <h1 id="二叉堆"><a href="#二叉堆" class="headerlink" title="二叉堆"></a>二叉堆</h1><p>二叉堆是通过递归定义的：首先二叉堆是一个完全二叉树或近似完全二叉树（这里近似完全二叉树是什么东东？）  </p>
+<ol>
+<li>父节点键值大于或等于（or小于或等于）子节点键值;</li>
+<li>左右子树仍然是二叉堆。</li>
+</ol>
+<h2 id="上浮和下沉"><a href="#上浮和下沉" class="headerlink" title="上浮和下沉"></a>上浮和下沉</h2><ul>
+<li><p>下沉<br>对于根节点而言，一般是最大或最小的节点，那么如果一个不满足这个条件的序列，就需要通过一系列步骤来建立堆，下沉是其中之一。<br>删除节点时，首先将最后的节点覆盖根节点，然后通过下沉操作确定合适的位置，完成删除操作。    </p>
+</li>
+<li><p>上浮<br>后续插入的节点，通过上浮的操作来确定其位置。  </p>
+</li>
+</ul>
+<h2 id="堆化数组"><a href="#堆化数组" class="headerlink" title="堆化数组"></a>堆化数组</h2><p>将所有树枝点进行一次下沉操作，其实也可以对所有叶子节点执行上浮操作，但是对两个同双亲的叶子节点执行上浮相当于对一个树枝点进行下沉，所以选择下沉操作了。<br>另外，对所有树枝点进行下沉操作，可以理解为每一次都是对已经调整好的左右二叉堆添加一个根节点再进行下沉，具有递归的思想定义，但是使用叶子节点进行上浮操作的话，没有一个合理的递归思想的定义来理解，虽然也可以这么做，也应该是对的。  </p>
+<h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><p>每次将根节点与最后一个数交换，然后去掉最后一个节点，重新更新二叉堆，这样重复N-1次，就得到了有序的数组。  </p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>最大堆得到的序列是递增的，最小堆得到的序列是递减的。  </p>
+<h2 id="算法复杂度"><a href="#算法复杂度" class="headerlink" title="算法复杂度"></a>算法复杂度</h2><p>建立堆时N/2次下沉操作，每次复杂度log(N),排序时经过N-1次交换，但每次恢复堆需要log(N)，所以总的复杂度仍然是N * log(N)。</p>
 
       
     </div>
@@ -350,6 +362,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/算法/" rel="tag"># 算法</a>
+          
+        </div>
+      
 
       
       
@@ -359,15 +377,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/08/18/resume/" rel="next" title="使用markdown写简历">
+                <i class="fa fa-chevron-left"></i> 使用markdown写简历
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/07/04/629/" rel="prev" title="ubuntu16.04安装hexo记录">
-                ubuntu16.04安装hexo记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -414,8 +432,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/stars.jpg"
@@ -479,6 +506,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#二叉堆"><span class="nav-number">1.</span> <span class="nav-text">二叉堆</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#上浮和下沉"><span class="nav-number">1.1.</span> <span class="nav-text">上浮和下沉</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆化数组"><span class="nav-number">1.2.</span> <span class="nav-text">堆化数组</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#堆排序"><span class="nav-number">2.</span> <span class="nav-text">堆排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#特点"><span class="nav-number">2.1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法复杂度"><span class="nav-number">2.2.</span> <span class="nav-text">算法复杂度</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
