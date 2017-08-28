@@ -77,7 +77,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="hexo," />
+  <meta name="keywords" content="Linux," />
 
 
 
@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="今天提交hexo时，显示如下错误：123456789101112fatal: unable to access &amp;apos;http://github.com/jjgame12/jjgame12.github.io.git/&amp;apos;: Recv failure: 连接被对方重设FATAL Something&amp;apos;s wrong. Maybe you can find the soluti">
-<meta name="keywords" content="hexo">
+<meta name="description" content="续之前的问题之前曾经遇到过一次，当时的方法修改了某个系统文件参数，还是不行，最后猜测是使用了rfkill软阻塞了无线网卡的启动，但今天尝试后，发现并不是软阻塞的问题。因为只显示蓝牙的情况，根本不显示无线网卡的情况。使用ifconfig -a 也找不到无线网卡，iwconfig也没有发现无线网卡。   操作：使用sudo ifconfig wlp3s0 up去打开无线网卡，显示：   wlp3s0:">
+<meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo d 提交时遇到的问题">
-<meta property="og:url" content="http://yoursite.com/2017/08/17/hexo提交的问题/index.html">
+<meta property="og:title" content="ubuntu16.04挂起长时间后再恢复无法联网">
+<meta property="og:url" content="http://yoursite.com/2017/08/27/827/index.html">
 <meta property="og:site_name" content="jjgame的世界">
-<meta property="og:description" content="今天提交hexo时，显示如下错误：123456789101112fatal: unable to access &amp;apos;http://github.com/jjgame12/jjgame12.github.io.git/&amp;apos;: Recv failure: 连接被对方重设FATAL Something&amp;apos;s wrong. Maybe you can find the soluti">
-<meta property="og:updated_time" content="2017-08-17T02:55:41.152Z">
+<meta property="og:description" content="续之前的问题之前曾经遇到过一次，当时的方法修改了某个系统文件参数，还是不行，最后猜测是使用了rfkill软阻塞了无线网卡的启动，但今天尝试后，发现并不是软阻塞的问题。因为只显示蓝牙的情况，根本不显示无线网卡的情况。使用ifconfig -a 也找不到无线网卡，iwconfig也没有发现无线网卡。   操作：使用sudo ifconfig wlp3s0 up去打开无线网卡，显示：   wlp3s0:">
+<meta property="og:updated_time" content="2017-08-27T14:52:54.321Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo d 提交时遇到的问题">
-<meta name="twitter:description" content="今天提交hexo时，显示如下错误：123456789101112fatal: unable to access &amp;apos;http://github.com/jjgame12/jjgame12.github.io.git/&amp;apos;: Recv failure: 连接被对方重设FATAL Something&amp;apos;s wrong. Maybe you can find the soluti">
+<meta name="twitter:title" content="ubuntu16.04挂起长时间后再恢复无法联网">
+<meta name="twitter:description" content="续之前的问题之前曾经遇到过一次，当时的方法修改了某个系统文件参数，还是不行，最后猜测是使用了rfkill软阻塞了无线网卡的启动，但今天尝试后，发现并不是软阻塞的问题。因为只显示蓝牙的情况，根本不显示无线网卡的情况。使用ifconfig -a 也找不到无线网卡，iwconfig也没有发现无线网卡。   操作：使用sudo ifconfig wlp3s0 up去打开无线网卡，显示：   wlp3s0:">
 
 
 
@@ -131,13 +131,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/08/17/hexo提交的问题/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/08/27/827/"/>
 
 
 
 
 
-  <title>hexo d 提交时遇到的问题 | jjgame的世界</title>
+  <title>ubuntu16.04挂起长时间后再恢复无法联网 | jjgame的世界</title>
   
 
 
@@ -256,7 +256,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/17/hexo提交的问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/27/827/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="jjgame">
@@ -273,7 +273,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo d 提交时遇到的问题</h1>
+          <h1 class="post-title" itemprop="name headline">ubuntu16.04挂起长时间后再恢复无法联网</h1>
         
 
         <div class="post-meta">
@@ -285,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-17T10:55:41+08:00">
-                2017-08-17
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-27T22:52:54+08:00">
+                2017-08-27
               </time>
             
 
@@ -320,10 +320,17 @@
       
 
       
-        <p>今天提交hexo时，显示如下错误：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">fatal: unable to access &apos;http://github.com/jjgame12/jjgame12.github.io.git/&apos;: Recv failure: 连接被对方重设</div><div class="line">FATAL Something&apos;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</div><div class="line">Error: fatal: unable to access &apos;http://github.com/jjgame12/jjgame12.github.io.git/&apos;: Recv failure: 连接被对方重设</div><div class="line"></div><div class="line">    at ChildProcess.&lt;anonymous&gt; (/home/jj/hexo/node_modules/hexo-util/lib/spawn.js:37:17)</div><div class="line">    at emitTwo (events.js:125:13)</div><div class="line">    at ChildProcess.emit (events.js:213:7)</div><div class="line">    at maybeClose (internal/child_process.js:897:16)</div><div class="line">    at Socket.stream.socket.on (internal/child_process.js:340:11)</div><div class="line">    at emitOne (events.js:115:13)</div><div class="line">    at Socket.emit (events.js:210:7)</div><div class="line">    at Pipe._handle.close [as _onclose] (net.js:548:12)</div></pre></td></tr></table></figure></p>
-<h1 id="可能的方法"><a href="#可能的方法" class="headerlink" title="可能的方法"></a>可能的方法</h1><p>经过网上查询，有的说是git版本太新，导致不能识别，但是我之前都使用过并且提交成功了的，难道后面更新了？我不记得我更新了啊。<br>据说安装稍微旧一点的git应该可以解决，我没有这样做。</p>
-<h1 id="正确的方法"><a href="#正确的方法" class="headerlink" title="正确的方法"></a>正确的方法</h1><p>后面又发现一个方法：<br>将hexo配置文件_config.yml中deploy下面的repository更改为<br><a href="https://用户名:密码@github.com/pythonsoft/test.Git然后就可以了。（应该这样走的是ssh路线，我之前用的是http方式传输）" target="_blank" rel="external">https://用户名:密码@github.com/pythonsoft/test.Git然后就可以了。（应该这样走的是ssh路线，我之前用的是http方式传输）</a><br>注意：用户名不是登陆账号名， 是github的用户名，如我的用户名就是jjgame12。<br>来源：<a href="http://blog.csdn.net/w20101310/article/details/52796721?locationNum=6&amp;fps=1" target="_blank" rel="external">w20101310的博客</a></p>
-
+        <h1 id="续之前的问题"><a href="#续之前的问题" class="headerlink" title="续之前的问题"></a>续之前的问题</h1><p>之前曾经遇到过一次，当时的方法修改了某个系统文件参数，还是不行，最后猜测是使用了rfkill软阻塞了无线网卡的启动，但今天尝试后，发现并不是软阻塞的问题。因为只显示蓝牙的情况，根本不显示无线网卡的情况。<br>使用ifconfig -a 也找不到无线网卡，iwconfig也没有发现无线网卡。  </p>
+<p>操作：使用sudo ifconfig wlp3s0 up去打开无线网卡，显示：   wlp3s0: 获取接口标志时出错: 没有那个设备。<br>$:service networking restart:Job for networking.service failed because the control process exited with error code. See “systemctl status networking.service” and “journalctl -xe” for details.  </p>
+<p>$:systemctl status networking.service : networking.service - Raise network interfaces<br>   Loaded: loaded (/lib/systemd/system/networking.service; enabled; vendor prese<br>  Drop-In: /run/systemd/generator/networking.service.d<br>           └─50-insserv.conf-$network.conf<br>   Active: failed (Result: exit-code) since 日 2017-08-27 15:57:23 CST; 19s ago<br>     Docs: man:interfaces(5)<br>  Process: 13959 ExecStart=/sbin/ifup -a –read-environment (code=exited, status<br>  Process: 13954 ExecStartPre=/bin/sh -c [ “$CONFIGURE_INTERFACES” != “no” ] &amp;&amp;<br> Main PID: 13959 (code=exited, status=1/FAILURE)  </p>
+<p>8月 27 15:57:23 jjlinux ifup[13959]: than a configuration issue please read the s<br>8月 27 15:5:q7:23 jjlinux ifup[13959]: bugs on either our web page at www.isc.org o<br>8月 27 15:57:23 jjlinux ifup[13959]: before submitting a bug.  These pages explai<br>8月 27 15:57:23 jjlinux ifup[13959]: process and the information we find helpful<br>8月 27 15:57:23 jjlinux ifup[13959]: exiting.<br>8月 27 15:57:23 jjlinux ifup[13959]: Failed to bring up eth0.<br>8月 27 15:57:23 jjlinux systemd[1]: networking.service: Main process exited, code<br>8月 27 15:57:23 jjlinux systemd[1]: Failed to start Raise network interfaces.<br>8月 27 15:57:23 jjlinux systemd[1]: networking.service: Unit entered failed state<br>8月 27 15:57:23 jjlinux systemd[1]: networking.service: Failed with result ‘exit  </p>
+<p>$:vi /etc/network/interfaces:  </p>
+<h1 id="interfaces-5-file-used-by-ifup-8-and-ifdown-8"><a href="#interfaces-5-file-used-by-ifup-8-and-ifdown-8" class="headerlink" title="interfaces(5) file used by ifup(8) and ifdown(8)"></a>interfaces(5) file used by ifup(8) and ifdown(8)</h1><p>auto lo<br>iface lo inet loopback<br>auto eth0<br>iface eth0 inet dhcp<br>没有wlp3s0网卡。  </p>
+<p>猜测：是不是手动添加可修复这个问题？  </p>
+<p>好像确实是无线网卡被关闭，完全打不开，使用了sudo network-manager restart，使用了service networking restart，仍然没用。<br>使用iwconfig查看时发现wlp3s0网卡是ESSID:off/any，Access Point:Not-Associated等等。<br>还使用了ifconfig wlp3s0 up，仍然不行，这个是无线网卡，但是发现了一些信息，提示的是SIOCSIFFLAGS：不被允许的操作。感觉像是系统直接禁止了这个无线的服务。后面在开启服务时又提示的是systemctl无法操作。  </p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>貌似使用wicd替换network-manager服务好像可以解决这个问题，因为ubuntu下的network-manager服务管理网络的，很容易出问题。但是原因呢？到底是为什么网卡都启用不了了？<br>网上还说可以在/etc/modprobe.d/blacklist.conf文件最后加入 blacklist acer-wmi,不知道什么意思。<br>从这延伸的话：是不是可能某个模块被禁用了？  </p>
+<h1 id="暂时的解决"><a href="#暂时的解决" class="headerlink" title="暂时的解决"></a>暂时的解决</h1><p>删除了network-manager管理网络，使用wicd来管理。    </p>
+<h2 id="怎么开机自动开启wicd"><a href="#怎么开机自动开启wicd" class="headerlink" title="怎么开机自动开启wicd?"></a>怎么开机自动开启wicd?</h2>
       
     </div>
 
@@ -352,7 +359,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
           
         </div>
       
@@ -365,8 +372,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/17/817/" rel="next" title="main函数中argc,argv参数的含义">
-                <i class="fa fa-chevron-left"></i> main函数中argc,argv参数的含义
+              <a href="/2017/08/26/825/" rel="next" title="总结">
+                <i class="fa fa-chevron-left"></i> 总结
               </a>
             
           </div>
@@ -375,8 +382,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/18/resume/" rel="prev" title="使用markdown写简历">
-                使用markdown写简历 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/28/828/" rel="prev" title="求1+2+3+...+n的非循环代码方法">
+                求1+2+3+...+n的非循环代码方法 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -508,7 +515,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#可能的方法"><span class="nav-number">1.</span> <span class="nav-text">可能的方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正确的方法"><span class="nav-number">2.</span> <span class="nav-text">正确的方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#续之前的问题"><span class="nav-number">1.</span> <span class="nav-text">续之前的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#interfaces-5-file-used-by-ifup-8-and-ifdown-8"><span class="nav-number">2.</span> <span class="nav-text">interfaces(5) file used by ifup(8) and ifdown(8)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解决"><span class="nav-number">2.1.</span> <span class="nav-text">解决</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#暂时的解决"><span class="nav-number">3.</span> <span class="nav-text">暂时的解决</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#怎么开机自动开启wicd"><span class="nav-number">3.1.</span> <span class="nav-text">怎么开机自动开启wicd?</span></a></li></ol></li></ol></div>
             
 
           </div>

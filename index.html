@@ -256,6 +256,243 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/28/828/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jjgame">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/stars.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjgame的世界">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/28/828/" itemprop="url">求1+2+3+...+n的非循环代码方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T22:56:46+08:00">
+                2017-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="题目简述"><a href="#题目简述" class="headerlink" title="题目简述"></a>题目简述</h1><p>今天在牛客网上做到这样一道题，让求1+2+3+…n，但是不能用到循环，if,switch case等判断语句，问该怎么做？</p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>最基本的方法肯定是循环，那么寻找与循环相对应的，那就是递归，而递归总会判断n处于最开端的状态，考虑使用&amp;&amp;逻辑判断语句的短路操作来执行类似if的效果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">int sum(int n)</div><div class="line">&#123;</div><div class="line">    int temp = n;</div><div class="line">    temp &amp;&amp; (temp += sum(temp-1));//类似if(temp == 0) return 0;</div><div class="line">    return temp;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还有另外一种做法：使用TMP，即template元编程，但这样需要在编译时就确定好待求的变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">template&lt;int n&gt;</div><div class="line">class sum</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    enum&#123;val = n + sum&lt;n-1&gt;::val&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">template&lt;&gt;</div><div class="line">class sum&lt;1&gt;</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    enum&#123;val = 1&#125;;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    cout&lt;&lt;sum&lt;6&gt;::val&lt;&lt;endl;//但是需要在编译时就能确定非类型模板参数，而不能延后到运行时，这是一个缺点，也是一个优点</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>or<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">template&lt;int n&gt;</div><div class="line">class sum1</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    const static int val = n + sum1&lt;n-1&gt;::val;//其实关键就是在编译期能够确定最终结果，所以上述例子和本例都要使用编译器能够确定的变量，本例是静态常量成员。</div><div class="line">&#125;;</div><div class="line"></div><div class="line">template&lt;&gt;</div><div class="line">class sum1&lt;1&gt;</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    const static int val = 1;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">int main()</div><div class="line">&#123;</div><div class="line">    cout&lt;&lt;sum1&lt;6&gt;::val&lt;&lt;endl;//但是需要在编译时就能确定非类型模板参数，而不能延后到运行时，这是一个缺点，也是一个优点</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最早的递归可以在运行时再传n值。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/27/827/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jjgame">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/stars.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjgame的世界">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/27/827/" itemprop="url">ubuntu16.04挂起长时间后再恢复无法联网</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-27T22:52:54+08:00">
+                2017-08-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="续之前的问题"><a href="#续之前的问题" class="headerlink" title="续之前的问题"></a>续之前的问题</h1><p>之前曾经遇到过一次，当时的方法修改了某个系统文件参数，还是不行，最后猜测是使用了rfkill软阻塞了无线网卡的启动，但今天尝试后，发现并不是软阻塞的问题。因为只显示蓝牙的情况，根本不显示无线网卡的情况。<br>使用ifconfig -a 也找不到无线网卡，iwconfig也没有发现无线网卡。  </p>
+<p>操作：使用sudo ifconfig wlp3s0 up去打开无线网卡，显示：   wlp3s0: 获取接口标志时出错: 没有那个设备。<br>$:service networking restart:Job for networking.service failed because the control process exited with error code. See “systemctl status networking.service” and “journalctl -xe” for details.  </p>
+<p>$:systemctl status networking.service : networking.service - Raise network interfaces<br>   Loaded: loaded (/lib/systemd/system/networking.service; enabled; vendor prese<br>  Drop-In: /run/systemd/generator/networking.service.d<br>           └─50-insserv.conf-$network.conf<br>   Active: failed (Result: exit-code) since 日 2017-08-27 15:57:23 CST; 19s ago<br>     Docs: man:interfaces(5)<br>  Process: 13959 ExecStart=/sbin/ifup -a –read-environment (code=exited, status<br>  Process: 13954 ExecStartPre=/bin/sh -c [ “$CONFIGURE_INTERFACES” != “no” ] &amp;&amp;<br> Main PID: 13959 (code=exited, status=1/FAILURE)  </p>
+<p>8月 27 15:57:23 jjlinux ifup[13959]: than a configuration issue please read the s<br>8月 27 15:5:q7:23 jjlinux ifup[13959]: bugs on either our web page at www.isc.org o<br>8月 27 15:57:23 jjlinux ifup[13959]: before submitting a bug.  These pages explai<br>8月 27 15:57:23 jjlinux ifup[13959]: process and the information we find helpful<br>8月 27 15:57:23 jjlinux ifup[13959]: exiting.<br>8月 27 15:57:23 jjlinux ifup[13959]: Failed to bring up eth0.<br>8月 27 15:57:23 jjlinux systemd[1]: networking.service: Main process exited, code<br>8月 27 15:57:23 jjlinux systemd[1]: Failed to start Raise network interfaces.<br>8月 27 15:57:23 jjlinux systemd[1]: networking.service: Unit entered failed state<br>8月 27 15:57:23 jjlinux systemd[1]: networking.service: Failed with result ‘exit  </p>
+<p>$:vi /etc/network/interfaces:  </p>
+<h1 id="interfaces-5-file-used-by-ifup-8-and-ifdown-8"><a href="#interfaces-5-file-used-by-ifup-8-and-ifdown-8" class="headerlink" title="interfaces(5) file used by ifup(8) and ifdown(8)"></a>interfaces(5) file used by ifup(8) and ifdown(8)</h1><p>auto lo<br>iface lo inet loopback<br>auto eth0<br>iface eth0 inet dhcp<br>没有wlp3s0网卡。  </p>
+<p>猜测：是不是手动添加可修复这个问题？  </p>
+<p>好像确实是无线网卡被关闭，完全打不开，使用了sudo network-manager restart，使用了service networking restart，仍然没用。<br>使用iwconfig查看时发现wlp3s0网卡是ESSID:off/any，Access Point:Not-Associated等等。<br>还使用了ifconfig wlp3s0 up，仍然不行，这个是无线网卡，但是发现了一些信息，提示的是SIOCSIFFLAGS：不被允许的操作。感觉像是系统直接禁止了这个无线的服务。后面在开启服务时又提示的是systemctl无法操作。  </p>
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>貌似使用wicd替换network-manager服务好像可以解决这个问题，因为ubuntu下的network-manager服务管理网络的，很容易出问题。但是原因呢？到底是为什么网卡都启用不了了？<br>网上还说可以在/etc/modprobe.d/blacklist.conf文件最后加入 blacklist acer-wmi,不知道什么意思。<br>从这延伸的话：是不是可能某个模块被禁用了？  </p>
+<h1 id="暂时的解决"><a href="#暂时的解决" class="headerlink" title="暂时的解决"></a>暂时的解决</h1><p>删除了network-manager管理网络，使用wicd来管理。    </p>
+<h2 id="怎么开机自动开启wicd"><a href="#怎么开机自动开启wicd" class="headerlink" title="怎么开机自动开启wicd?"></a>怎么开机自动开启wicd?</h2>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/26/825/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1221,122 +1458,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/building/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="jjgame">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/stars.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="jjgame的世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/06/29/building/" itemprop="url">大嘎，看，我们的博客</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-29T00:28:12+08:00">
-                2017-06-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>第一次学会使用搭建博客，第一时间和大嘎分享，每当看到别人写书什么的都会写道感谢。。。，虽然我还到不了这种境界，但是也想将<br>这种新鲜感向身边的人传递，比如，大嘎。这将是一个记录技术的博客，也是一个记录关于大嘎的东西。</p>
-<p><img src="/images/together.jpg" alt="img"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1379,7 +1507,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1392,7 +1520,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
