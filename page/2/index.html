@@ -256,6 +256,142 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/04/629/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="jjgame">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/stars.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="jjgame的世界">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/04/629/" itemprop="url">ubuntu16.04安装hexo记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-04T00:01:42+08:00">
+                2017-07-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="安装前的准备"><a href="#安装前的准备" class="headerlink" title="安装前的准备"></a>安装前的准备</h1><p>git   node.js</p>
+<h2 id="node-js安装"><a href="#node-js安装" class="headerlink" title="node.js安装"></a>node.js安装</h2><ol>
+<li>首先安装nvm</li>
+</ol>
+<p>curl:(我是通过bash安装的，所以通道后是bash，也可以根据不同的shell自行安装，nvm的github上面有讲到会自动设置shell的关键字以使用<br>nvm,但是fish好像不能自动设置，可以试着用fisher nvm来安装，可能过程会略有问题，没深入去尝试了)</p>
+<p><code>$curl https://raw.github.com/creationix/nvm/master/install.sh | bash</code></p>
+<p>或者使用wget:</p>
+<p><code>$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | bash</code></p>
+<ol>
+<li>重启终端，执行</li>
+</ol>
+<p><code>$nvm install stable</code></p>
+<h1 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h1><p><code>npm install -g hexo-cli</code></p>
+<p>参考：<a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="external">hexo中文官方网站</a></p>
+<h1 id="hexo简述"><a href="#hexo简述" class="headerlink" title="hexo简述"></a>hexo简述</h1><p>在本地建立hexo工程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo init &lt;folder&gt;</div><div class="line">cd &lt;folder&gt;</div><div class="line">npm install</div></pre></td></tr></table></figure></p>
+<p>folder为自定义文件夹。</p>
+<p>建立好后会生成系列文件夹，其中source中的_post存放markdown文件用来生成静态网页。themes为主题文件夹，hexo会根据主题来生成静态页面。</p>
+<h1 id="github与本地hexo建立连接"><a href="#github与本地hexo建立连接" class="headerlink" title="github与本地hexo建立连接"></a>github与本地hexo建立连接</h1><p>建立与github用户名对应的仓库，仓库名需要是”your_user_name.github.io”,这样生成的域名才会是your_user_name.github.io</p>
+<h2 id="在站点配置文件-config-yml中设置部署信息："><a href="#在站点配置文件-config-yml中设置部署信息：" class="headerlink" title="在站点配置文件_config.yml中设置部署信息："></a>在站点配置文件_config.yml中设置部署信息：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repo: git@github.com:your_user_name/your_user_name.github.io.git</div><div class="line">  branch: master</div><div class="line">  message: &apos;站点更新:&#123;&#123;now(&quot;YYYY-MM-DD HH:mm:ss&quot;)&#125;&#125;&apos;</div></pre></td></tr></table></figure>
+<p>Tips：注意格式，：后有空格，type repo branch message前有两个空格。</p>
+<p>然后执行以下命令：</p>
+<p><code>npm install hexo-deployer-git --save</code></p>
+<h2 id="部署网页"><a href="#部署网页" class="headerlink" title="部署网页"></a>部署网页</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line">hexo generate</div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+<p>这样就可以部署到网站上去了。只需要添加自己喜欢的主题和markdown文件就可以生成静态网页并部署啦。</p>
+<p>参考：<a href="http://zhufanjia.com/2016/06/07/%E9%80%9A%E8%BF%87Hexo%E5%9C%A8Github%E4%B8%8A%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E6%95%99%E7%A8%8B-%E4%B8%80/" target="_blank" rel="external">青山的博客</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/29/building/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -409,7 +545,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -422,7 +558,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
